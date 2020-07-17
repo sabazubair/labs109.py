@@ -23,14 +23,22 @@ def ryerson_letter_grade(n):
 def is_ascending(items):
     return all(i < j for i, j in zip(items, items[1:]))
 
-# Failing
+# 1. PASSED
+
+
+def only_odd_digits(n):
+    return set(str(n))-set('13579') == set()
+
+
+# 2. Failing, Test #17
 
 
 def only_odd_digits(n):
     for n in str(n):
-        # print(type(n))
-        # print(n)
-        if n == "1" or n == "5" or n == "7" or n == "9":
+        if (int(n) % 2 != 0):
+            print(True)
             return True
-        else:
-            return False
+    return False
+
+
+only_odd_digits(10)
