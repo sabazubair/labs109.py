@@ -57,6 +57,32 @@ def nearest_smaller(items):
             result.append(e)
     return result
 
+
+def expand_intervals(intervals):
+    result = []
+    for item in intervals.split(","):
+        dash = item.find("-")
+        if dash > -1:
+            start, end = item[:dash], item[dash+1:]
+        else:
+            start = end = item
+        result.extend(range(int(start), int(end)+1))
+    return result
+
+
+def possible_words(words, pattern):
+    result = []
+    for word in words:
+        if len(word) == len(pattern):
+            for (chw, chp) in zip(word, pattern):
+                if chp == "*" and chw in pattern:
+                    break
+                if chp != "*" and chp != chw:
+                    break
+            else:
+                result.append(word)
+    return result
+
 # # 2. Failing, Test #17
 
 
