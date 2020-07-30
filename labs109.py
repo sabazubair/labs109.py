@@ -17,28 +17,40 @@ def ryerson_letter_grade(n):
         adjust = ""
     return "DCB"[tens - 5] + adjust
 
-# PASSED
-
 
 def is_ascending(items):
     return all(i < j for i, j in zip(items, items[1:]))
-
-# 1. PASSED
 
 
 def only_odd_digits(n):
     return set(str(n))-set('13579') == set()
 
 
-# 2. Failing, Test #17
+def squares_intersect(s1, s2):
+    (x1, y1, d1) = s1
+    (x2, y2, d2) = s2
+    return not (x1 + d1 < x2 or x2 + d2 < x1 or y1 + d1 < y2 or y2 + d2 < y1)
 
 
-def only_odd_digits(n):
-    for n in str(n):
-        if (int(n) % 2 != 0):
-            print(True)
-            return True
-    return False
+def tukeys_ninthers(items):
+    while len(items) > 1:
+        items = [sorted(items[i:i+3])[1] for i in range(0, len(items), 3)]
+    return items[0]
 
 
-only_odd_digits(10)
+def knight_jump(steps, start, end):
+    return steps == tuple(sorted((abs(x - y) for (x, y) in zip(start, end)), reverse=True))
+
+
+# # 2. Failing, Test #17
+
+
+# def only_odd_digits(n):
+#     for n in str(n):
+#         if (int(n) % 2 != 0):
+#             print(True)
+#             return True
+#     return False
+
+
+# only_odd_digits(10)
